@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaga Alam  - Website Edukatif</title>
+    <style>
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #81C784;
+            --accent-color: #FFC107;
+            --text-color: #333;
+            --light-color: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: #F5F5F5;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0.5rem 0;
+        }
+
+        nav li {
+            margin: 0 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--primary-color);
+        }
+
+        .hero {
+            position: relative;
+            height: 300px;
+            background-color: #2E7D32;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-image {
+            height: 200px;
+            background-color: #81C784;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .facts-section {
+            background-color: var(--secondary-color);
+            padding: 3rem 2rem;
+            margin: 2rem -2rem;
+            color: white;
+        }
+
+        .facts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .fact-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--text-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .fact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .calculator-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .calculator-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .result {
+            background-color: var(--light-color);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .tips-section ul {
+            list-style-position: inside;
+            margin-bottom: 2rem;
+        }
+
+        .tips-section li {
+            margin-bottom: 0.5rem;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        .quiz-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-question {
+            margin-bottom: 2rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+
+        .quiz-option {
+            padding: 1rem;
+            background-color: var(--light-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quiz-option:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .calculator-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jaga Alam Kita </h1>
+        <p>Bersama Melestarikan Lingkungan untuk Masa Depan yang Lebih Baik</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#masalah">Masalah Lingkungan</a></li>
+            <li><a href="#solusi">Solusi</a></li>
+            <li><a href="#kalkulator">Kalkulator Karbon</a></li>
+            <li><a href="#kuis">Kuis</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero" id="beranda">
+        <h2>Mari Jaga Alam Indonesia</h2>
+        <p>Indonesia memiliki keanekaragaman hayati yang luar biasa dan menjadi paru-paru dunia. Saatnya kita ambil peran dalam menjaga kekayaan alam ini.</p>
+        <a href="#masalah" class="btn">Pelajari Lebih Lanjut</a>
+    </section>
+    
+    <main>
+        <section id="masalah">
+            <h2 class="section-title">Masalah Lingkungan yang Kita Hadapi</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-image">🌲</div>
+                    <div class="card-content">
+                        <h3>Deforestasi</h3>
+                        <p>Setiap tahun, Indonesia kehilangan ratusan ribu hektar hutan akibat penebangan liar, pembukaan lahan untuk perkebunan, dan kebakaran hutan. Hal ini berdampak pada hilangnya habitat flora dan fauna, banjir, tanah longsor, dan perubahan iklim.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image">🗑️</div>
+                    <div class="card-content">
+                        <h3>Sampah Plastik</h3>
+                        <p>Indonesia menjadi penyumbang sampah plastik ke laut terbesar kedua di dunia. Sampah plastik merusak ekosistem laut, membunuh hewan laut, dan mencemari sumber air yang kita konsumsi.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image">🏭</div>
+                    <div class="card-content">
+                        <h3>Polusi Udara</h3>
+                        <p>Polusi udara dari kendaraan bermotor, pabrik, dan pembakaran hutan menyebabkan menurunnya kualitas udara. Hal ini berdampak pada kesehatan manusia dan mempercepat pemanasan global.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="facts-section">
+            <h2 class="section-title" style="color: white;">Fakta Lingkungan</h2>
+            <div class="facts-container">
+                <div class="fact-card">
+                    <h3>Deforestasi</h3>
+                    <p>Indonesia kehilangan sekitar 115.459 hektar hutan primer pada tahun 2020.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h3>Sampah Plastik</h3>
+                    <p>Indonesia menghasilkan sekitar 64 juta ton sampah setiap tahun, dan 3,2 juta ton di antaranya adalah sampah plastik yang dibuang ke laut.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h3>Keanekaragaman Hayati</h3>
+                    <p>Indonesia memiliki 17% dari total spesies di dunia, termasuk 10% dari spesies tanaman berbunga di dunia.</p>
+                </div>
+                
+                <div class="fact-card">
+                    <h3>Karbon Dioksida</h3>
+                    <p>Satu pohon dapat menyerap hingga 22 kg karbon dioksida per tahun.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="solusi">
+            <h2 class="section-title">Solusi untuk Menjaga Alam</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-image">🌱</div>
+                    <div class="card-content">
+                        <h3>Reboisasi</h3>
+                        <p>Menanam pohon dapat membantu mengembalikan hutan yang hilang, menyerap karbon dioksida, dan menjadi habitat bagi berbagai spesies. Ikuti kegiatan penanaman pohon di daerahmu atau mulai menanam di lingkungan sekitarmu.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image">♻️</div>
+                    <div class="card-content">
+                        <h3>Reduce, Reuse, Recycle</h3>
+                        <p>Kurangi penggunaan plastik sekali pakai, gunakan kembali barang-barang yang masih bisa dipakai, dan daur ulang sampah. Hal sederhana ini dapat mengurangi jumlah sampah yang berakhir di tempat pembuangan akhir atau di laut.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image">🚲</div>
+                    <div class="card-content">
+                        <h3>Transportasi Ramah Lingkungan</h3>
+                        <p>Gunakan transportasi umum, bersepeda, atau berjalan kaki untuk mengurangi emisi karbon. Jika memungkinkan, gunakan kendaraan listrik atau berbahan bakar ramah lingkungan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="kalkulator" class="calculator-section">
+            <h2 class="section-title">Kalkulator Jejak Karbon</h2>
+            <p>Hitung berapa banyak karbon dioksida yang kamu hasilkan setiap hari dan pelajari cara menguranginya.</p>
+            
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="transport">Transportasi Harian:</label>
+                    <select id="transport">
+                        <option value="0">Berjalan kaki/sepeda</option>
+                        <option value="2.3">Transportasi umum</option>
+                        <option value="4.6">Motor</option>
+                        <option value="6.1">Mobil (bensin)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="electricity">Penggunaan Listrik (kWh/hari):</label>
+                    <input type="number" id="electricity" min="0" value="5">
+                </div>
+                
+                <div class="form-group">
+                    <label for="waste">Sampah yang Dihasilkan (kg/hari):</label>
+                    <input type="number" id="waste" min="0" value="0.5">
+                </div>
+                
+                <div class="form-group">
+                    <label for="diet">Pola Makan:</label>
+                    <select id="diet">
+                        <option value="3.3">Banyak daging</option>
+                        <option value="2.5">Campuran</option>
+                        <option value="1.7">Vegetarian</option>
+                        <option value="1.5">Vegan</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button onclick="calculateCarbon()" class="btn">Hitung Jejak Karbon</button>
+            
+            <div id="result" class="result">
+                <h3>Jejak Karbon Harian Kamu:</h3>
+                <p id="carbon-result"></p>
+                <h4>Tips untuk Mengurangi Jejak Karbon:</h4>
+                <ul id="carbon-tips"></ul>
+            </div>
+        </section>
+        
+        <section class="tips-section">
+            <h2 class="section-title">Tips Harian Menjaga Lingkungan</h2>
+            <ul>
+                <li>Bawa tas belanja sendiri saat berbelanja untuk mengurangi penggunaan kantong plastik.</li>
+                <li>Matikan lampu dan cabut peralatan elektronik saat tidak digunakan.</li>
+                <li>Gunakan air dengan bijak, perbaiki keran yang bocor, dan tampung air hujan untuk menyiram tanaman.</li>
+                <li>Kurangi konsumsi daging dan pilih makanan lokal dan musiman.</li>
+                <li>Kompos sisa makanan untuk mengurangi sampah dan menghasilkan pupuk alami.</li>
+                <li>Pilih produk dengan kemasan minimal atau kemasan yang dapat didaur ulang.</li>
+                <li>Tanam pohon atau tanaman di halaman rumah atau ikut dalam kegiatan penanaman pohon.</li>
+                <li>Ajak keluarga dan teman untuk hidup lebih ramah lingkungan.</li>
+            </ul>
+        </section>
+        
+        <section id="kuis" class="quiz-container">
+            <h2 class="section-title">Kuis Pengetahuan Lingkungan</h2>
+            <div id="quiz">
+                <div class="quiz-question">
+                    <h3>1. Apa yang dimaksud dengan deforestasi?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(0, 0)">A. Penanaman pohon baru</div>
+                        <div class="quiz-option" onclick="checkAnswer(0, 1)">B. Penggundulan atau penghilangan hutan</div>
+                        <div class="quiz-option" onclick="checkAnswer(0, 2)">C. Pemindahan pohon ke lokasi baru</div>
+                        <div class="quiz-option" onclick="checkAnswer(0, 3)">D. Penambahan tanaman di hutan</div>
+                    </div>
+                    <p id="answer-0" style="display: none; margin-top: 10px; font-weight: bold;"></p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h3>2. Berapa lama waktu yang dibutuhkan untuk plastik terurai di alam?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(1, 0)">A. 10 tahun</div>
+                        <div class="quiz-option" onclick="checkAnswer(1, 1)">B. 50 tahun</div>
+                        <div class="quiz-option" onclick="checkAnswer(1, 2)">C. 100-500 tahun</div>
+                        <div class="quiz-option" onclick="checkAnswer(1, 3)">D. Kurang dari 1 tahun</div>
+                    </div>
+                    <p id="answer-1" style="display: none; margin-top: 10px; font-weight: bold;"></p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h3>3. Mana yang bukan termasuk 3R dalam pengelolaan sampah?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(2, 0)">A. Reduce (Mengurangi)</div>
+                        <div class="quiz-option" onclick="checkAnswer(2, 1)">B. Reuse (Menggunakan kembali)</div>
+                        <div class="quiz-option" onclick="checkAnswer(2, 2)">C. Recycle (Daur ulang)</div>
+                        <div class="quiz-option" onclick="checkAnswer(2, 3)">D. Replace (Mengganti)</div>
+                    </div>
+                    <p id="answer-2" style="display: none; margin-top: 10px; font-weight: bold;"></p>
+                </div>
+            </div>
+            
+            <p id="quiz-score" style="display: none; margin-top: 20px; font-weight: bold; text-align: center;"></p>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Jaga Alam Kita</h3>
+            <p>Bersama-sama melestarikan lingkungan untuk masa depan yang lebih baik. Mari mulai dari hal kecil dan jadilah bagian dari perubahan!</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">YouTube</a>
+            </div>
+            <p>&copy; 2025 Jaga Alam Kita. Dibuat dengan ❤️ untuk Bumi.</p>
+        </div>
+    </footer>
+
+    <script>
+        function calculateCarbon() {
+            // Ambil nilai dari input
+            const transport = parseFloat(document.getElementById('transport').value);
+            const electricity = parseFloat(document.getElementById('electricity').value) * 0.5; // kWh ke kg CO2
+            const waste = parseFloat(document.getElementById('waste').value) * 2.5; // kg sampah ke kg CO2
+            const diet = parseFloat(document.getElementById('diet').value);
+            
+            // Hitung total
+            const total = transport + electricity + waste + diet;
+            
+            // Tampilkan hasil
+            document.getElementById('carbon-result').textContent = `${total.toFixed(2)} kg CO2 per hari atau sekitar ${(total * 365).toFixed(2)} kg CO2 per tahun`;
+            
+            // Tampilkan tips berdasarkan hasil
+            const tipsElement = document.getElementById('carbon-tips');
+            tipsElement.innerHTML = '';
+            
+            if (transport > 4) {
+                const li = document.createElement('li');
+                li.textContent = 'Pertimbangkan untuk menggunakan transportasi umum, bersepeda, atau berjalan kaki untuk mengurangi emisi karbon dari transportasi.';
+                tipsElement.appendChild(li);
+            }
+            
+            if (electricity > 3) {
+                const li = document.createElement('li');
+                li.textContent = 'Kurangi penggunaan listrik dengan mematikan peralatan elektronik saat tidak digunakan dan beralih ke lampu hemat energi.';
+                tipsElement.appendChild(li);
+            }
+            
+            if (waste > 1) {
+                const li = document.createElement('li');
+                li.textContent = 'Kurangi sampah yang dihasilkan dengan mengurangi penggunaan barang sekali pakai dan mendaur ulang sampah.';
+                tipsElement.appendChild(li);
+            }
+            
+            if (diet > 2) {
+                const li = document.createElement('li');
+                li.textContent = 'Pertimbangkan untuk mengurangi konsumsi daging dan produk hewani untuk mengurangi jejak karbon dari makanan.';
+                tipsElement.appendChild(li);
+            }
+            
+            // Tambahkan tips umum
+            const li = document.createElement('li');
+            li.textContent = 'Tanam pohon atau tanaman di sekitar rumah untuk membantu menyerap karbon dioksida.';
+            tipsElement.appendChild(li);
+            
+            // Tampilkan hasil
+            document.getElementById('result').style.display = 'block';
+        }
+        
+        function checkAnswer(questionIndex, answerIndex) {
+            // Jawaban yang benar
+            const correctAnswers = [1, 2, 3]; // B, C, D
+            
+            // Pesan jawaban
+            const answerMessages = [
+                ['Salah. Deforestasi adalah penggundulan atau penghilangan hutan.', 'Benar! Deforestasi adalah penggundulan atau penghilangan hutan.', 'Salah. Deforestasi adalah penggundulan atau penghilangan hutan.', 'Salah. Deforestasi adalah penggundulan atau penghilangan hutan.'],
+                ['Salah. Plastik dapat bertahan 100-500 tahun untuk terurai di alam.', 'Salah. Plastik dapat bertahan 100-500 tahun untuk terurai di alam.', 'Benar! Plastik dapat bertahan 100-500 tahun untuk terurai di alam.', 'Salah. Plastik dapat bertahan 100-500 tahun untuk terurai di alam.'],
+                ['Salah. 3R adalah Reduce (Mengurangi), Reuse (Menggunakan kembali), dan Recycle (Daur ulang).', 'Salah. 3R adalah Reduce (Mengurangi), Reuse (Menggunakan kembali), dan Recycle (Daur ulang).', 'Salah. 3R adalah Reduce (Mengurangi), Reuse (Menggunakan kembali), dan Recycle (Daur ulang).', 'Benar! Replace (Mengganti) bukan termasuk dalam konsep 3R.']
+            ];
+            
+            // Tampilkan pesan jawaban
+            const answerElement = document.getElementById(`answer-${questionIndex}`);
+            answerElement.textContent = answerMessages[questionIndex][answerIndex];
+            answerElement.style.display = 'block';
+            
+            // Hitung dan tampilkan skor
+            const answers = document.querySelectorAll(`[id^="answer-"]`);
+            let correctCount = 0;
+            
+            for (let i = 0; i < answers.length; i++) {
+                if (answers[i].textContent.startsWith('Benar!')) {
+                    correctCount++;
+                }
+            }
+            
+            if (document.querySelectorAll(`[id^="answer-"]:not([style="display: none;"])`).length === 3) {
+                const scoreElement = document.getElementById('quiz-score');
+                scoreElement.textContent = `Skor kamu: ${correctCount} dari 3 pertanyaan benar`;
+                scoreElement.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
